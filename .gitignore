@@ -1,29 +1,34 @@
-# Node.js dependencies
-node_modules/
-
-# Build output
-build/
-
-# Logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Editor directories and files
+# —————— OS & Editor ——————
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
-*.swp
 
-# MacOS files
-.DS_Store
-
-# Miscellaneous
+# —————— Backend (FastAPI) ——————
+# Virtual envs
+backend/venv/
+backend/.venv/
+# Byte-compiled / cache
+backend/__pycache__/
+backend/*.py[cod]
+# Build / packaging
+backend/build/
+backend/dist/
+backend/*.egg-info/
+# PDF storage (if you don't want to check PDFs into Git)
+backend/pdfs/
+# Logs / DB files
 *.log
-*.lock
+*.sqlite3
+
+# —————— Frontend (React) ——————
+# Dependencies
+pdf-uploader/node_modules/
+# Build output
+pdf-uploader/build/
+/pdf-uploader/.cache/
+/pdf-uploader/.env
+
+# —————— Misc ——————
+npm-debug.log*
+yarn-error.log*

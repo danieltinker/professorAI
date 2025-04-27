@@ -1,68 +1,60 @@
-# professorAI
-This is a Full Stack fully scalable AI system designed to parse text, audio of an entire course and hyperlink it using LLMs to build an Index for the terminology, definitions and key concepts definitions of the course. 
+Below is a README.md you can drop into your professorAI/ root folder:
 
-# React File Upload App
+Copy
+# ProfessorAI PDF Uploader
 
-This project is a simple React application that allows users to upload PDF files and view a list of uploaded files. It is built using TypeScript and includes components for file upload and file listing.
+This repository contains two parts:
 
-## Features
+1. **Backend** – A FastAPI service that accepts PDF uploads and stores them locally.  
+2. **Frontend** – A React app that lets you test the upload endpoint.
 
-- Upload PDF files
-- Display a list of uploaded files
+---
 
-## Getting Started
+## 📁 Project Structure
 
-To get started with the project, follow these steps:
+professorAI/ ├── backend/ │ ├── main.py # FastAPI app │ └── pdfs/ # Saved PDFs (created at runtime) └── pdf-uploader/ ├── package.json # React app config (with proxy to backend) └── src/ └── App.js # PDF upload component
 
-### Prerequisites
+---
 
-Make sure you have the following installed:
+## 🚀 Prerequisites
 
-- Node.js (version 14 or higher)
-- npm (comes with Node.js)
+- **Python 3.8+**  
+- **Node.js 16+** and **npm**  
+- A terminal/shell
 
-### Installation
+---
 
-1. Clone the repository:
+## 🛠️ Setup & Run
 
-   ```
-   git clone https://github.com/yourusername/react-file-upload-app.git
-   ```
+### 1. Backend
 
-2. Navigate to the project directory:
+```bash
+cd professorAI/backend
+# (Optional) create a venv:
+python -m venv .venv
+source .venv/bin/activate      # macOS/Linux
+# or .venv\Scripts\activate     # Windows
 
-   ```
-   cd react-file-upload-app
-   ```
+pip install fastapi uvicorn python-multipart
+uvicorn main:app --reload --host 0.0.0.0 --port 8000
+The FastAPI server will start at http://localhost:8000.
 
-3. Install the dependencies:
+Uploaded PDFs are saved under backend/pdfs/.
 
-   ```
-   npm install
-   ```
-
-### Running the Application
-
-To run the application locally, use the following command:
-
-```
+2. Frontend
+cd professorAI/pdf-uploader
+npm install
 npm start
-```
+The React dev server runs on http://localhost:3000.
 
-This will start the development server and open the application in your default web browser.
+Thanks to the "proxy": "http://localhost:8000" setting in package.json, all requests to /professorAI/BuildCourse/ will be forwarded to your FastAPI backend.
 
-### Usage
+📦 Usage
+Open your browser to http://localhost:3000.
 
-1. Use the file input to select PDF files from your computer.
-2. Click the upload button to send the files to the server.
-3. The uploaded files will be displayed in a list below the upload section.
+Click Choose File, select a PDF, then Upload.
 
-### Contributing
+On success, you’ll see a confirmation message and find the file in backend/pdfs/.
 
-If you would like to contribute to this project, please fork the repository and submit a pull request.
-
-### License
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
-# ProjectBY:
-Daniel Baruch, Stav Korai, Or Erez and Eden Aharon
+🔧 Customization & Notes
+CORS in backend/main.py is currently set to allow only http://localhost:3000.
