@@ -21,3 +21,52 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+# —————— Environment files ——————
+# Local env vars (don’t commit secrets)
+*.env
+backend/.env
+pdf-uploader/.env
+
+# —————— Python virtualenvs ——————
+backend/.venv/
+backend/venv/
+.venv/
+venv/
+
+# —————— Editor & OS ——————
+# macOS
+.DS_Store
+# Windows
+Thumbs.db
+# VSCode
+.vscode/
+# JetBrains
+.idea/
+
+# —————— Logs & Coverage ——————
+*.log
+coverage/
+htmlcov/
+
+# —————— Docker ——————
+# Docker Compose override files
+docker-compose.override.yml
+# Docker build context locals
+docker-compose*.env
+# If you ever mount a docker volume for certs, data, etc.
+data/
+
+# —————— React build artifacts ——————
+pdf-uploader/build/
+pdf-uploader/.cache/
+pdf-uploader/.env.local
+pdf-uploader/.env.development.local
+pdf-uploader/.env.test.local
+pdf-uploader/.env.production.local
+
+# —————— Miscellaneous ——————
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,23 @@
+version: "3.8"
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: professorai-backend
+    env_file:
+      - ./backend/.env         # define ALLOWED_ORIGINS, STORAGE_DIR here
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend/pdfs:/app/pdfs
+
+  frontend:
+    build:
+      context: ./pdf-uploader
+      dockerfile: Dockerfile
+    container_name: professorai-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend

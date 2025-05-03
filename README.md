@@ -58,3 +58,8 @@ On success, you’ll see a confirmation message and find the file in backend/pdf
 
 🔧 Customization & Notes
 CORS in backend/main.py is currently set to allow only http://localhost:3000.
+
+
+running in docker:
+docker-compose up --build -d
+docker-compose down
